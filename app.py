@@ -112,7 +112,7 @@ def soShow():
 
 @app.route('/user/show')
 def userShow():
-    user = Usuario.query.filter(Usuario.id == 1).one()
+    user = User.query.filter(User.id_U == 1).one()
     return render_template('user.html',user = user)
 
 

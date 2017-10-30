@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS So;
 CREATE TABLE So(
 "id" SERIAL,
 "kernel" VARCHAR(100),
@@ -10,9 +11,11 @@ CREATE TABLE So(
 "hardware" VARCHAR(100)
 );
 
+
 INSERT INTO So VALUES 
 (1,'linux','release','node','ibm','200mb','x64','ms-dos','old');
 
+DROP TABLE IF EXISTS Usuario;
 CREATE TABLE Usuario(
 "id_U" SERIAL,
 "Usuarios" VARCHAR(),
@@ -21,7 +24,7 @@ CREATE TABLE Usuario(
 
 INSERT INTO Usuario VALUES
 ('kelly','kelly');
-
+DROP TABLE IF EXISTS CPU;
 CREATE TABLE CPU(
 "id_CPU" SERIAL,
 "us" VARCHAR,
@@ -31,9 +34,10 @@ CREATE TABLE CPU(
 "st"VARCHAR
 );
 
-INSERT INTO Usuario VALUES
+INSERT INTO CPU VALUES
 (1,'19','1','76','3','0');
 
+DROP TABLE IF EXISTS Memory;
 CREATE TABLE Memory(
 "id_Memory" SERIAL,
 "swpd"VARCHAR,
@@ -45,6 +49,7 @@ CREATE TABLE Memory(
 INSERT INTO Memory VALUES
 (1,'416060','169868','15564','245304');
 
+DROP TABLE IF EXISTS Swap;
 CREATE TABLE Swap(
 "id_Swap" SERIAL,
 "si"VARCHAR,
