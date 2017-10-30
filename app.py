@@ -112,14 +112,20 @@ def soShow():
 
 @app.route('/user/show')
 def userShow():
-    user = User.query.filter(User.id_U == 1).one()
+    user = Usuario.query.filter(Usuario.id_U == 1).one()
     return render_template('user.html',user = user)
 
 
 @app.route('/mem/show')
-def memShow():
-    careers = So.query.all()
-    return render_template('mem.html',carreras = careers)
+def memoryShow():
+    memory = Memory.query.filter(Memory.id_Memory == 1).one()
+    return render_template('mem.html',memory = memory)
+
+
+@app.route('/swap/show')
+def swapShow():
+    swap = Swap.query.filter(Swap.id_Swap == 1).one()
+    return render_template('swap.html',swap = swap)
 
 
 @app.route('/robots.txt')
