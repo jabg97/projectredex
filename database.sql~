@@ -42,15 +42,9 @@ CREATE TABLE Memory(
 "cache"VARCHAR
 );
 
-INSERT INTO Memory VALUES
-(1,'416060','169868','15564','245304');
-
 CREATE TABLE Swap(
 "id_Swap" SERIAL,
 "si"VARCHAR,
 "so"VARCHAR
 );
-
-INSERT INTO Swap VALUES
-(1,'7','60');
 

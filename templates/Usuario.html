@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %} Usuario {% endblock %}
+
+{% block content %}
+
+
+<nav class="navbar navbar-expand-lg navbar-dark teal darken-3 ">
+    <a class="navbar-brand" href="#">informacion USUARIO</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+        aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('home') }}">Pagina Principal <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ url_for('soShow') }}">Usuario </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+                
+
+<div class="container" style="height: 100vh">
+    <div class="flex-center flex-column">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+              <tr>
+                <th>#</th>
+                <th>Usuarios</th>
+                <th>UsuarioActivo</th>
+              </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <th scope="row">{{ user.id_U }}</th>
+                        <td>{{ user.Usuarios }}</td>
+                        <td>{{ so.UsuarioActivo }}</td>
+                    </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+{% endblock %}
+  
