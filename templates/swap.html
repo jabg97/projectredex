@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %} Intercambio {% endblock %}
+
+{% block content %}
+<div class="container" style="height: 100vh">
+    <div class="flex-center flex-column">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+              <tr>
+                <th>#</th>
+                <th>Si</th>
+                <th>So</th>
+              </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <th scope="row">{{ swap.id_Swap }}</th>
+                        <td>{{ swap.si }}</td>
+                        <td>{{ swap.so }}</td>
+                    </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+{% endblock %}
+  
+    
