@@ -48,7 +48,7 @@ class Usuario(db.Model):
         self.UsuarioActivo = UsuarioActivo
 
     def __repr__(self):
-        return "<Os(id='%d', Usuario='%s', UsuarioActivo='%s')>" % (
+        return "<Usuario(id='%d', Usuario='%s', UsuarioActivo='%s')>" % (
         self.id, self.Usuario, self.UsuarioActivo)
 
 class CPU(db.Model):
@@ -67,7 +67,7 @@ class CPU(db.Model):
         self.st = st
 
     def __repr__(self):
-        return "<Os(id_CPU='%d', us='%s', sy='%s', id='%s', wa='%s', st='%s')>" % (
+        return "<CPU(id_CPU='%d', us='%s', sy='%s', id='%s', wa='%s', st='%s')>" % (
         self.id_CPU, self.us, self.sy, self.id, self.wa, self.st)
 
 class Memory(db.Model):
@@ -84,7 +84,7 @@ class Memory(db.Model):
         self.cache = cache
 
     def __repr__(self):
-        return "<Os(id_Memory='%d', swpd='%s', free='%s', buff='%s', cache='%s')>" % (
+        return "<Memory(id_Memory='%d', swpd='%s', free='%s', buff='%s', cache='%s')>" % (
         self.id_Memory, self.swpd, self.free, self.buff, self.cache)
 
 class Swap(db.Model):
@@ -97,28 +97,9 @@ class Swap(db.Model):
         self.so = so
 
     def __repr__(self):
-        return "<Os(id_Swap='%d', si='%s', so='%s')>" % (
+        return "<Swap(id_Swap='%d', si='%s', so='%s')>" % (
         self.id_Swap, self.si, self.so)
         
-class CPU(db.Model):
-	id_CPU = db.Column(db.Integer, primary_key=True)
-	us = db.Column(db.String(100), unique=True)
-	sy = db.Column(db.String(100), unique=True)
-	id = db.Column(db.String(100), unique=True)
-	wa = db.Column(db.String(100), unique=True)
-	st = db.Column(db.String(100), unique=True)
-
-    def __init__(self, us, sy, id, wa, st):
-		self.us = us
-        self.sy = sy
-        self.id = id
-        self.wa = wa
-        self.st = st
-
-    def __repr__(self):
-        return "<Os(id_CPU='%d', us='%s', sy='%s', id='%s', wa='%s',st='%s')>" % (
-        self.id_CPU, self.us, self.sy, self.id, self.wa, self.st)
-
 
 @app.route('/')
 def home():
