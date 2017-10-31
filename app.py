@@ -99,6 +99,25 @@ class Swap(db.Model):
     def __repr__(self):
         return "<Os(id_Swap='%d', si='%s', so='%s')>" % (
         self.id_Swap, self.si, self.so)
+        
+     class CPU(db.Model):
+    id_CPU = db.Column(db.Integer, primary_key=True)
+    us = db.Column(db.String(100), unique=True)
+    sy = db.Column(db.String(100), unique=True)
+    id = db.Column(db.String(100), unique=True)
+    wa = db.Column(db.String(100), unique=True)
+    st = db.Column(db.String(100), unique=True)
+
+    def __init__(self, us, sy, id, wa, st):
+        self.us = us
+        self.sy = sy
+        self.id = id
+        self.wa = wa
+        self.st = st
+
+    def __repr__(self):
+        return "<Os(id_CPU='%d', us='%s', sy='%s', id='%s', wa='%s',st='%s')>" % (
+        self.id_CPU, self.us, self.sy, self.id, self.wa, self.st)
 
 
 @app.route('/')
@@ -127,6 +146,10 @@ def swapShow():
     swap = Swap.query.filter(Swap.id_Swap == 1).one()
     return render_template('swap.html',swap = swap)
 
+@app.route('/cpu/show')
+def cpuShow():
+    cpu = CPU.query.filter(CPU.id_CPU == 1).one()
+    return render_template('swap.html',cpu = cpu)
 
 @app.route('/robots.txt')
 def robots():

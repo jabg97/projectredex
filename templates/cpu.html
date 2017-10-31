@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %} Usuario {% endblock %}
+{% block title %} Sistema Operativo {% endblock %}
 
 {% block content %}
 
 
-<nav class="navbar navbar-expand-lg navbar-dark lighten-3 ">
-    <a class="navbar-brand" href="#">informacion USUARIO</a>
+<nav class="navbar navbar-expand-lg navbar-dark pink darken-4 ">
+    <a class="navbar-brand" href="#">informacion SO</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
         aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -17,7 +17,7 @@
                 <a class="nav-link" href="{{ url_for('home') }}">Pagina Principal <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url_for('soShow') }}">Sistemas operativos </a>
+                <a class="nav-link" href="{{ url_for('soShow') }}">Sistema Operativo </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('useryShow') }}">Usuario</a>
@@ -28,7 +28,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('swapyShow') }}">intercambio</a>
             </li>
-             <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('cpuShow') }}">CPU</a>
             </li>
         </ul>
@@ -42,15 +42,21 @@
             <thead class="thead-inverse">
               <tr>
                 <th>#</th>
-                <th>Usuarios</th>
-                <th>UsuarioActivo</th>
+                <th>us</th>
+                <th>sy</th>
+                <th>id</th>
+                <th>wa</th>
+                <th>st</th>              
               </tr>
             </thead>
             <tbody>
                     <tr>
-                        <th scope="row">{{ user.id_U }}</th>
-                        <td>{{ user.Usuarios }}</td>
-                        <td>{{ so.UsuarioActivo }}</td>
+                        <th scope="row">{{ cpu.id_CPU }}</th>
+                        <td>{{ cpu.us }}</td>
+                        <td>{{ cpu.sy }}</td>
+                        <td>{{ cpu.id }}</td>
+                        <td>{{ cpu.wa }}</td>
+                        <td>{{ cpu.st }}</</td>
                     </tr>
             </tbody>
           </table>
