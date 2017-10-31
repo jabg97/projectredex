@@ -1,4 +1,3 @@
-#KEY = postgresql-closed-81267
 import os
 
 from flask import Flask
@@ -35,7 +34,7 @@ class So(db.Model):
         self.hardware = hardware
 
     def __repr__(self):
-        return "<Os(id='%d', kernel='%s', release='%s', nodename='%s', kernelv='%s', machine='%s', processor='%s', so='%s', hardware='%s')>" % (
+        return "<So(id='%d', kernel='%s', release='%s', nodename='%s', kernelv='%s', machine='%s', processor='%s', so='%s', hardware='%s')>" % (
         self.id, self.kernel, self.release, self.nodename, self.kernelv, self.machine, self.processor, self.so, self.hardware)
 
 class Usuario(db.Model):
@@ -49,7 +48,7 @@ class Usuario(db.Model):
 
     def __repr__(self):
         return "<Usuario(id='%d', Usuario='%s', UsuarioActivo='%s')>" % (
-        self.id, self.Usuario, self.UsuarioActivo)
+        self.id_U, self.Usuario, self.UsuarioActivo)
 
 class CPU(db.Model):
     id_CPU = db.Column(db.Integer, primary_key=True)
