@@ -39,19 +39,19 @@ class So(db.Model):
 
 class Usuario(db.Model):
     id_U = db.Column(db.Integer, primary_key=True)
-    Usuario = db.Column(db.String(100), unique=True)
+    Usuarios = db.Column(db.String(100), unique=True)
     UsuarioActivo = db.Column(db.String(100), unique=True)
 
-    def __init__(self, Usuario, UsuarioActivo):
-        self.Usuario = Usuario
+    def __init__(self, Usuarios, UsuarioActivo):
+        self.Usuarios = Usuarios
         self.UsuarioActivo = UsuarioActivo
 
     def __repr__(self):
-        return "<Usuario(id_U='%d', Usuario='%s', UsuarioActivo='%s')>" % (
-        self.id_U, self.Usuario, self.UsuarioActivo)
+        return "<Usuario(id_U='%d', Usuarios='%s', UsuarioActivo='%s')>" % (
+        self.id_U, self.Usuarios, self.UsuarioActivo)
 
-class CPU(db.Model):
-    id_CPU = db.Column(db.Integer, primary_key=True)
+class Cpu(db.Model):
+    id_Cpu = db.Column(db.Integer, primary_key=True)
     us = db.Column(db.String(100), unique=True)
     sy = db.Column(db.String(100), unique=True)
     idC = db.Column(db.String(100), unique=True)
@@ -66,8 +66,8 @@ class CPU(db.Model):
         self.st = st
 
     def __repr__(self):
-        return "<CPU(id_CPU='%d', us='%s', sy='%s', idC='%s', wa='%s', st='%s')>" % (
-        self.id_CPU, self.us, self.sy, self.idC, self.wa, self.st)
+        return "<Cpu(id_Cpu='%d', us='%s', sy='%s', idC='%s', wa='%s', st='%s')>" % (
+        self.id_Cpu, self.us, self.sy, self.idC, self.wa, self.st)
 
 class Memory(db.Model):
     id_Memory = db.Column(db.Integer, primary_key=True)
@@ -128,7 +128,7 @@ def swapShow():
 
 @app.route('/cpu/show')
 def cpuShow():
-    cpu = CPU.query.filter(CPU.id_CPU == 1).one()
+    cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
     return render_template('cpu.html',cpu = cpu)
 
 @app.route('/robots.txt')
