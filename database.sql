@@ -16,14 +16,16 @@ INSERT INTO So VALUES
 (1,'linux','release','node','ibm','200mb','x64','ms-dos','old');
 
 DROP TABLE IF EXISTS Usuario;
+
 CREATE TABLE Usuario(
 "id_U" SERIAL,
-"Usuarios" VARCHAR(),
-"UsuarioActivo" VARCHAR()
+"Usuarios" VARCHAR(100),
+"UsuarioActivo" VARCHAR(100)
 );
 
 INSERT INTO Usuario VALUES
-('kelly','kelly');
+(1,'kelly','kelly');
+
 DROP TABLE IF EXISTS CPU;
 
 CREATE TABLE CPU(
