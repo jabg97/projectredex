@@ -47,27 +47,27 @@ class Usuario(db.Model):
         self.UsuarioActivo = UsuarioActivo
 
     def __repr__(self):
-        return "<Usuario(id='%d', Usuario='%s', UsuarioActivo='%s')>" % (
+        return "<Usuario(id_U='%d', Usuario='%s', UsuarioActivo='%s')>" % (
         self.id_U, self.Usuario, self.UsuarioActivo)
 
 class CPU(db.Model):
     id_CPU = db.Column(db.Integer, primary_key=True)
     us = db.Column(db.String(100), unique=True)
     sy = db.Column(db.String(100), unique=True)
-    id = db.Column(db.String(100), unique=True)
+    idC = db.Column(db.String(100), unique=True)
     wa = db.Column(db.String(100), unique=True)
     st = db.Column(db.String(100), unique=True)
 
-    def __init__(self, us, sy, id, wa, st):
+    def __init__(self, us, sy, idC, wa, st):
         self.us = us
         self.sy = sy
-        self.id = id
+        self.idC = idC
         self.wa = wa
         self.st = st
 
     def __repr__(self):
-        return "<CPU(id_CPU='%d', us='%s', sy='%s', id='%s', wa='%s', st='%s')>" % (
-        self.id_CPU, self.us, self.sy, self.id, self.wa, self.st)
+        return "<CPU(id_CPU='%d', us='%s', sy='%s', idC='%s', wa='%s', st='%s')>" % (
+        self.id_CPU, self.us, self.sy, self.idC, self.wa, self.st)
 
 class Memory(db.Model):
     id_Memory = db.Column(db.Integer, primary_key=True)
