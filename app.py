@@ -100,16 +100,16 @@ class Swap(db.Model):
         return "<Os(id_Swap='%d', si='%s', so='%s')>" % (
         self.id_Swap, self.si, self.so)
         
-     class CPU(db.Model):
-    id_CPU = db.Column(db.Integer, primary_key=True)
-    us = db.Column(db.String(100), unique=True)
-    sy = db.Column(db.String(100), unique=True)
-    id = db.Column(db.String(100), unique=True)
-    wa = db.Column(db.String(100), unique=True)
-    st = db.Column(db.String(100), unique=True)
+class CPU(db.Model):
+	id_CPU = db.Column(db.Integer, primary_key=True)
+	us = db.Column(db.String(100), unique=True)
+	sy = db.Column(db.String(100), unique=True)
+	id = db.Column(db.String(100), unique=True)
+	wa = db.Column(db.String(100), unique=True)
+	st = db.Column(db.String(100), unique=True)
 
     def __init__(self, us, sy, id, wa, st):
-        self.us = us
+		self.us = us
         self.sy = sy
         self.id = id
         self.wa = wa
@@ -149,7 +149,7 @@ def swapShow():
 @app.route('/cpu/show')
 def cpuShow():
     cpu = CPU.query.filter(CPU.id_CPU == 1).one()
-    return render_template('swap.html',cpu = cpu)
+    return render_template('cpu.html',cpu = cpu)
 
 @app.route('/robots.txt')
 def robots():
