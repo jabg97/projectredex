@@ -104,10 +104,16 @@ class Swap(db.Model):
 def home():
     return render_template('index.html')
 
+
 @app.route('/so/show')
 def soShow():
     so = So.query.filter(So.id == 1).one()
     return render_template('so.html',so = so)
+
+@app.route('/so/post',methods=['POST'])
+def soPost():
+    so = request.get_json()
+    return json.dumps(so)
 
 @app.route('/user/show')
 def userShow():
@@ -141,10 +147,4 @@ if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
     
-    #Sistemas operativos
-""format(id=id)
-""format(kernel=kernel)
-""format(release=release)
-""format(nodename=nodename)
-""format(kernelv=kernelv)
-""format(machine=machine)
+    
