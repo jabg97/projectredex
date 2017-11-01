@@ -110,10 +110,9 @@ def soShow():
     so = So.query.filter(So.id == 1).one()
     return render_template('so.html',so = so)
 
-@app.route('/so/post',methods=['POST'])
-def soPost():
-    so = request.get_json()
-    return json.dumps(so)
+@app.route('/user/update/<string:Usuarios>/<string:UsuarioActivo>',methods=['GET'])
+def userUpdate(Usuarios,UsuarioActivo):
+    return Usuarios
 
 @app.route('/user/show')
 def userShow():
