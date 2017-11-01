@@ -112,7 +112,11 @@ def soShow():
 
 @app.route('/user/update/<string:Usuarios>/<string:UsuarioActivo>',methods=['GET'])
 def userUpdate(Usuarios,UsuarioActivo):
-    return Usuarios
+    user = Usuario.query.filter(Usuario.id_U == 1).one()
+    user.Usuarios = Usuarios
+    user.UsuarioActivo = UsuarioActivo
+    db.session.commit()
+    return "USUARIO MODIFICADO"
 
 @app.route('/user/show')
 def userShow():
