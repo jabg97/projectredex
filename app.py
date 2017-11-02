@@ -143,7 +143,7 @@ def memoryShow():
     return render_template('mem.html',memory = memory)
     
 @app.route('/mem/update/<string:swpd>/<string:free>/<string:buff>/<string:cache>')
-def memUpdate(swpd,free,buff,cache):
+def memoryUpdate(swpd,free,buff,cache):
 	memory = Memory.query.filter(Memory.id_Memory == 1).one()
 	mem.swpd = swpd
 	mem.free = free
@@ -171,8 +171,8 @@ def cpuShow():
     cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
     return render_template('cpu.html',cpu = cpu)
 
-@app.route('/cpu/update/<string:si>/<string:so>')
-def userUpdate(si,so):
+@app.route('/cpu/update/<string:us>/<string:sy>/<string:idc>/<string:wa>/<string:st>')
+def cpuUpdate(us,sy,idc,wa,st):
 	cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
 	cpu.us = us
 	cpu.sy = sy
