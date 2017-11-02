@@ -110,24 +110,47 @@ def soShow():
     so = So.query.filter(So.id == 1).one()
     return render_template('so.html',so = so)
 
-@app.route('/user/update/<string:Usuarios>/<string:UsuarioActivo>',methods=['GET'])
-def userUpdate(Usuarios,UsuarioActivo):
-    user = Usuario.query.filter(Usuario.id_U == 1).one()
-    user.Usuarios = Usuarios
-    user.UsuarioActivo = UsuarioActivo
-    db.session.commit()
-    return "USUARIO MODIFICADO"
+@app.route('/so/update/<string:kernel>/<string:release>/<string:nodename>/<string:kernelv>/<string:machine>/<string:processor>/<string:so>/<string:hardware>/')
+def soUpdate(kernel,release,nodename,kernelv,machine,processor,so,hardware):
+	so = So.query.filter(So.id == 1).one()
+	so.So = kernel
+	so.So = release
+	so.So = nodename
+	so.So = kernelv
+	so.So = machine
+	so.So = processor
+	so.So = so
+	so.So = hardware
+	db.session.commit()
+	return "USUARIO MODIFICADO"
 
 @app.route('/user/show')
 def userShow():
     user = Usuario.query.filter(Usuario.id_U == 1).one()
     return render_template('user.html',user = user)
-
+    
+@app.route('/user/update/<string:Usuarios>/<string:UsuarioActivos>')
+def userUpdate(Usuarios,UsuarioActivo):
+	user = Usuario.query.filter(Usuario.id_U == 1).one()
+	user.Usuarios = Usuarios
+	user.Usuarios =UsuariosActivos
+	db.session.commit()
+	return "USUARIO MODIFICADO"
 
 @app.route('/mem/show')
 def memoryShow():
     memory = Memory.query.filter(Memory.id_Memory == 1).one()
     return render_template('mem.html',memory = memory)
+    
+@app.route('/mem/update/<string:swpd>/<string:free>/<string:buff>/<string:cache>')
+def memUpdate(swpd,free,buff,cache):
+	memory = Memory.query.filter(Memory.id_Memory == 1).one()
+	mem.swpd = swpd
+	mem.free = free
+	mem.buff = buff
+	mem.cache = cache
+	db.session.commit()
+	return "USUARIO MODIFICADO"
 
 
 @app.route('/swap/show')
@@ -135,10 +158,31 @@ def swapShow():
     swap = Swap.query.filter(Swap.id_Swap == 1).one()
     return render_template('swap.html',swap = swap)
 
+@app.route('/swap/update/<string:si>/<string:so>')
+def swapUpdate(si,so):
+	swap = Swap.query.filter(Swap.id_Swap == 1).one()
+	swap.si = si
+	swap.so = so
+	db.session.commit()
+	return "USUARIO MODIFICADO"
+
 @app.route('/cpu/show')
 def cpuShow():
     cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
     return render_template('cpu.html',cpu = cpu)
+
+@app.route('/cpu/update/<string:si>/<string:so>')
+def userUpdate(si,so):
+	cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
+	cpu.us = us
+	cpu.sy = sy
+	cpu.idc = idc
+	cpu.wa = wa
+	cpu.st = st
+	db.session.commit()
+	return "USUARIO MODIFICADO"
+    
+
 
 @app.route('/robots.txt')
 def robots():
