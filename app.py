@@ -110,7 +110,7 @@ def soShow():
     so = So.query.filter(So.id == 1).one()
     return render_template('so.html',so = so)
 
-@app.route('/so/update/<string:kernel>/<string:release>/<string:nodename>/<string:kernelv>/<string:machine>/<string:processor>/<string:so>/<string:hardware>/')
+@app.route('/so/update/<string:kernel>/<string:release>/<string:nodename>/<string:kernelv>/<string:machine>/<string:processor>/<string:so>/<string:hardware>')
 def soUpdate(kernel,release,nodename,kernelv,machine,processor,so,hardware):
 	so = So.query.filter(So.id == 1).one()
 	so.kernel = kernel
