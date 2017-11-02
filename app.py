@@ -145,10 +145,10 @@ def memoryShow():
 @app.route('/mem/update/<string:swpd>/<string:free>/<string:buff>/<string:cache>')
 def memoryUpdate(swpd,free,buff,cache):
 	memory = Memory.query.filter(Memory.id_Memory == 1).one()
-	mem.swpd = swpd
-	mem.free = free
-	mem.buff = buff
-	mem.cache = cache
+	memory.swpd = swpd
+	memory.free = free
+	memory.buff = buff
+	memory.cache = cache
 	db.session.commit()
 	return "USUARIO MODIFICADO"
 
