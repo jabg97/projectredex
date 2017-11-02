@@ -113,14 +113,14 @@ def soShow():
 @app.route('/so/update/<string:kernel>/<string:release>/<string:nodename>/<string:kernelv>/<string:machine>/<string:processor>/<string:so>/<string:hardware>/')
 def soUpdate(kernel,release,nodename,kernelv,machine,processor,so,hardware):
 	so = So.query.filter(So.id == 1).one()
-	so.So = kernel
-	so.So = release
-	so.So = nodename
-	so.So = kernelv
-	so.So = machine
-	so.So = processor
-	so.So = so
-	so.So = hardware
+	so.kernel = kernel
+	so.release = release
+	so.nodename = nodename
+	so.kernelv = kernelv
+	so.machine = machine
+	so.processor = processor
+	so.so = so
+	so.hardware = hardware
 	db.session.commit()
 	return "USUARIO MODIFICADO"
 
@@ -129,11 +129,11 @@ def userShow():
     user = Usuario.query.filter(Usuario.id_U == 1).one()
     return render_template('user.html',user = user)
     
-@app.route('/user/update/<string:Usuarios>/<string:UsuarioActivos>')
+@app.route('/user/update/<string:Usuarios>/<string:UsuarioActivo>')
 def userUpdate(Usuarios,UsuarioActivo):
 	user = Usuario.query.filter(Usuario.id_U == 1).one()
 	user.Usuarios = Usuarios
-	user.Usuarios =UsuariosActivos
+	user.UsuarioActivo = UsuarioActivo
 	db.session.commit()
 	return "USUARIO MODIFICADO"
 
