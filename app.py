@@ -113,6 +113,8 @@ def soShow():
 @app.route('/so/update/<string:kernel>/<string:release>/<string:nodename>/<string:kernelv>/<string:machine>/<string:processor>/<string:so>/<string:hardware>')
 def soUpdate(kernel,release,nodename,kernelv,machine,processor,so,hardware):
     so = So.query.filter(So.id == 1).one()
+
+    db.session.commit()
     return "SO MODIFICADO"
 
 @app.route('/so/update', methods=['POST'])
