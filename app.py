@@ -123,8 +123,6 @@ def soUpdate(kernel,release,nodename,kernelv,machine,processor,so,hardware):
 	so.So = hardware
 	db.session.commit()
 	return "USUARIO MODIFICADO"
-	
-
 
 @app.route('/user/show')
 def userShow():
