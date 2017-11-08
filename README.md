@@ -7,25 +7,23 @@ This repository has all the base files ready for deploying a Heroku application,
 ### Initial
 
 ```bash
-$ git clone https://github.com/yuvadm/heroku-python-skeleton.git
-$ cd heroku-python-skeleton
-$ heroku create
+
+$ cd carpeta_proyecto
+$ heroku create nombre_proyecto --buildpack heroku/python
+$ git init
+$ git add .
+$ git commit -am "firs-commit"
 $ git push heroku master
 ```
 
 ### Database
 
 ```bash
-##Crear Base de datos
 $ heroku addons:create heroku-postgresql:hobby-dev
-$ heroku run python
+#Attached as HEROKU_POSTGRESQL_COLOR (clave de base de datos)
+#heroku pg:promote HEROKU_POSTGRESQL_COLOR (este paso puede que no toque hacerlo)
 ```
-
-and in the Python REPL:
-
-```python
->>> from app import db
->>> db.create_all()
-```
+heroku pg:psql
+#(copian y pegan todo lo que dice en database.sql)
 
 For a detailed introduction see [http://blog.y3xz.com/blog/2012/08/16/flask-and-postgresql-on-heroku/](http://blog.y3xz.com/blog/2012/08/16/flask-and-postgresql-on-heroku/).
