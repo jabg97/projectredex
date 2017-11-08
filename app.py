@@ -261,7 +261,7 @@ def cpuJSONUpdate():
             cpu.wa = cpudata.get("wa")
             cpu.st = cpudata.get("st")
             db.session.commit()
-            return "CPU MODIFICADo" 
+            return "CPU MODIFICADO" 
         else:
             return "NO hay Datos del CPU"
     else:
