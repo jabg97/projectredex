@@ -143,9 +143,9 @@ def userJSONUpdate():
         if request.json:
             userdata = request.json
             user = Usuario.query.filter(Usuario.id_U == 1).one()
-		    user.Usuarios = userdata.get("users")
-		    user.UsuarioActivo = userdata.get("users")
-		    db.session.commit()
+            user.Usuarios = userdata.get("users")
+            user.UsuarioActivo = userdata.get("users")
+            db.session.commit()
             return "USUARIO MODIFICADO" 
         else:
             return "NO hay Datos"
@@ -167,22 +167,7 @@ def memoryUpdate(swpd,free,buff,cache):
 	db.session.commit()
 	return "MEMORIA MODIFICADA"
 
-@app.route('/mem/update', methods=['POST'])
-def memoryJSONUpdate():
-    if request.headers['Content-Type'] == 'application/json':
-        if request.json:
-            memorydata = request.json
-            memory = Memory.query.filter(Memory.id_Memory == 1).one()
-	        memory.swpd = memorydata.get("swpd")
-	        memory.free = memorydata.get("free")
-	        memory.buff = memorydata.get("buff")
-	        memory.cache = memorydata.get("cache")
-		    db.session.commit()
-            return "MEMORIA MODIFICADA" 
-        else:
-            return "NO hay Datos"
-    else:
-        return "Error 415 (Tipo de medio no soportado)"
+
 
 @app.route('/swap/show')
 def swapShow():
