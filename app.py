@@ -98,7 +98,7 @@ class Swap(db.Model):
     def __repr__(self):
         return "<Swap(id_Swap='%d', si='%s', so='%s')>" % (
         self.id_Swap, self.si, self.so)
-        
+
 
 @app.route('/')
 def home():
@@ -112,17 +112,17 @@ def soShow():
 
 @app.route('/so/update/<string:kernel>/<string:release>/<string:nodename>/<string:kernelv>/<string:machine>/<string:processor>/<string:so>/<string:hardware>')
 def soUpdate(kernel,release,nodename,kernelv,machine,processor,so,hardware):
-	so = So.query.filter(So.id == 1).one()
-	so.kernel = kernel
-	so.release = release
-	so.nodename = nodename
-	so.kernelv = kernelv
-	so.machine = machine
-	so.processor = processor
-	so.so = so
-	so.hardware = hardware
-	db.session.commit()
-	return "USUARIO MODIFICADO"
+    so = So.query.filter(So.id == 1).one()
+    so.kernel = kernel
+    so.release = release
+    so.nodename = nodename
+    so.kernelv = kernelv
+    so.machine = machine
+    so.processor = processor
+    so.so = so
+    so.hardware = hardware
+    db.session.commit()
+    return "USUARIO MODIFICADO"
 
 @app.route('/user/show')
 def userShow():
@@ -131,23 +131,27 @@ def userShow():
     
 @app.route('/user/update/<string:Usuarios>/<string:UsuarioActivo>')
 def userUpdate(Usuarios,UsuarioActivo):
-	user = Usuario.query.filter(Usuario.id_U == 1).one()
-	user.Usuarios = Usuarios
-	user.UsuarioActivo = UsuarioActivo
-	db.session.commit()
-	return "USUARIO MODIFICADO"
+    user = Usuario.query.filter(Usuario.id_U == 1).one()
+    user.Usuarios = Usuarios
+    user.UsuarioActivo = UsuarioActivo
+    db.session.commit()
+    return "USUARIO MODIFICADO"
 	
 @app.route('/user/update', methods=['POST'])
 def userJSONUpdate():
-	if request.json:
-		userdata = request.json  
-		user = Usuario.query.filter(Usuario.id_U == 1).one()
-		#user.Usuarios = Usuarios
-		#user.UsuarioActivo = UsuarioActivo
-		#db.session.commit()       
-		return "Thanks. Your age is %s" % userdata
-	else:
-		return "no json received"
+    if request.headers['Content-Type'] == 'application/json':
+        if request.json:
+            userdata = request.json
+            user = Usuario.query.filter(Usuario.id_U == 1).one()
+		    #user.Usuarios = Usuarios
+		    #user.UsuarioActivo = UsuarioActivo
+		    #db.session.commit()
+		    #return "Thanks. Your age is %s" % userdata.get("users")
+            return "JSON Message: " + json.dumps(userdata)
+        else:
+            return "NO hay Datos"
+    else:
+        return "Error 415 (Tipo de medio no soportado)"
 
 @app.route('/mem/show')
 def memoryShow():
