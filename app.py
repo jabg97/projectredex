@@ -140,14 +140,14 @@ def userUpdate(Usuarios,UsuarioActivo):
 @app.route('/user/update', methods=['POST'])
 def userUpdate():
 	if request.json:
-        userdata = request.json  
-        user = Usuario.query.filter(Usuario.id_U == 1).one()
+		userdata = request.json  
+		user = Usuario.query.filter(Usuario.id_U == 1).one()
 		#user.Usuarios = Usuarios
 		#user.UsuarioActivo = UsuarioActivo
 		#db.session.commit()       
-        return "Thanks. Your age is %s" % mydata.get("age")
-    else:
-        return "no json received"
+		return "Thanks. Your age is %s" % mydata.get("age")
+	else:
+		return "no json received"
 
 @app.route('/mem/show')
 def memoryShow():
