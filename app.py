@@ -129,7 +129,7 @@ def soJSONUpdate():
     if request.headers['Content-Type'] == 'application/json':
         if request.json:
             sodata = request.json
-            so = So.query.filter(So.id == 1).one()
+            so = So.query.filter(So.id_so == 1).one()
             so.kernel = sodata.get("kernel")
             so.release = sodata.get("release")
             so.nodename = sodata.get("node_name")
