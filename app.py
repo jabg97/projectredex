@@ -114,13 +114,7 @@ def soShow():
 def soUpdate(kernel,release,nodename,kernelv,machine,processor,so,hardware):
     so = So.query.filter(So.id == 1).one()
     so.kernel = kernel
-    so.release = release
-    so.nodename = nodename
-    so.kernelv = kernelv
-    so.machine = machine
-    so.processor = processor
-    so.so = so
-    so.hardware = hardware
+    
     db.session.commit()
     return "SO MODIFICADO"
 
