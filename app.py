@@ -132,12 +132,12 @@ def soJSONUpdate():
             so = So.query.filter(So.id == 1).one()
             so.kernel = sodata.get("kernel")
             so.release = sodata.get("release")
-            so.nodename = sodata.get("nodename")
-            so.kernelv = sodata.get("kernelv")
+            so.nodename = sodata.get("node_name")
+            so.kernelv = sodata.get("kernel_version")
             so.machine = sodata.get("machine")
             so.processor = sodata.get("processor")
-            so.so = sodata.get("os")
-            so.hardware = sodata.get("hardware")
+            so.so = sodata.get("operating_system")
+            so.hardware = sodata.get("hardware_platform")
             db.session.commit()
             return "SO MODIFICADO" 
         else:
