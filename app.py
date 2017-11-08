@@ -124,6 +124,27 @@ def soUpdate(kernel,release,nodename,kernelv,machine,processor,so,hardware):
     db.session.commit()
     return "SO MODIFICADO"
 
+@app.route('/so/update', methods=['POST'])
+def soJSONUpdate():
+    if request.headers['Content-Type'] == 'application/json':
+        if request.json:
+            sodata = request.json
+            so = So.query.filter(So.id == 1).one()
+            so.kernel = sodata.get("kernel")
+            so.release = sodata.get("release")
+            so.nodename = sodata.get("nodename")
+            so.kernelv = sodata.get("kernelv")
+            so.machine = sodata.get("machine")
+            so.processor = sodata.get("processor")
+            so.so = sodata.get("os")
+            so.hardware = sodata.get("hardware")
+            db.session.commit()
+            return "SO MODIFICADO" 
+        else:
+            return "NO hay Datos"
+    else:
+        return "Error 415 (Tipo de medio no soportado)"
+
 @app.route('/user/show')
 def userShow():
     user = Usuario.query.filter(Usuario.id_U == 1).one()
@@ -167,7 +188,22 @@ def memoryUpdate(swpd,free,buff,cache):
 	db.session.commit()
 	return "MEMORIA MODIFICADA"
 
-
+@app.route('/mem/update', methods=['POST'])
+def memoryJSONUpdate():
+    if request.headers['Content-Type'] == 'application/json':
+        if request.json:
+            memorydata = request.json
+            memory = Memory.query.filter(Memory.id_Memory == 1).one()
+            memory.swpd = memorydata.get("swpd")
+            memory.free = memorydata.get("free")
+            memory.buff = memorydata.get("buff")
+            memory.cache = memorydata.get("cache")
+            db.session.commit()
+            return "MEMORIA MODIFICADA" 
+        else:
+            return "NO hay Datos"
+    else:
+        return "Error 415 (Tipo de medio no soportado)"
 
 @app.route('/swap/show')
 def swapShow():
