@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS So;
 CREATE TABLE So(
-"id" SERIAL,
+"id_so" SERIAL,
 "kernel" VARCHAR(100),
 "release" VARCHAR(100),
 "nodename" VARCHAR(100),
@@ -32,7 +32,7 @@ CREATE TABLE Cpu(
 "id_Cpu" SERIAL,
 "us" VARCHAR,
 "sy"VARCHAR,
-"idC"VARCHAR,
+"idnum"VARCHAR,
 "wa"VARCHAR,
 "st"VARCHAR
 );

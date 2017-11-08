@@ -13,7 +13,7 @@ db = SQLAlchemy(app)
 
 
 class So(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    id_so = db.Column(db.Integer, primary_key=True)
     kernel = db.Column(db.String(100), unique=True)
     release = db.Column(db.String(100), unique=True)
     nodename = db.Column(db.String(100), unique=True)
@@ -34,8 +34,8 @@ class So(db.Model):
         self.hardware = hardware
 
     def __repr__(self):
-        return "<So(id='%d', kernel='%s', release='%s', nodename='%s', kernelv='%s', machine='%s', processor='%s', so='%s', hardware='%s')>" % (
-        self.id, self.kernel, self.release, self.nodename, self.kernelv, self.machine, self.processor, self.so, self.hardware)
+        return "<So(id_so='%d', kernel='%s', release='%s', nodename='%s', kernelv='%s', machine='%s', processor='%s', so='%s', hardware='%s')>" % (
+        self.id_so, self.kernel, self.release, self.nodename, self.kernelv, self.machine, self.processor, self.so, self.hardware)
 
 class Usuario(db.Model):
     id_U = db.Column(db.Integer, primary_key=True)
@@ -107,13 +107,20 @@ def home():
 
 @app.route('/so/show')
 def soShow():
-    so = So.query.filter(So.id == 1).one()
+    so = So.query.filter(So.id_so == 1).one()
     return render_template('so.html',so = so)
 
 @app.route('/so/update/<string:kernel>/<string:release>/<string:nodename>/<string:kernelv>/<string:machine>/<string:processor>/<string:so>/<string:hardware>')
 def soUpdate(kernel,release,nodename,kernelv,machine,processor,so,hardware):
-    so = So.query.filter(So.id == 1).one()
-
+    so = So.query.filter(So.id_so == 1).one()
+    so.kernel = kernel
+    so.release = release
+    so.nodename = nodename
+    so.kernelv = kernelv
+    so.machine = machine
+    so.processor = processor
+    so.so = so
+    so.hardware = hardware
     db.session.commit()
     return "SO MODIFICADO"
 
@@ -231,12 +238,12 @@ def cpuShow():
     cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
     return render_template('cpu.html',cpu = cpu)
 
-@app.route('/cpu/update/<string:us>/<string:sy>/<string:idc>/<string:wa>/<string:st>')
-def cpuUpdate(us,sy,idc,wa,st):
+@app.route('/cpu/update/<string:us>/<string:sy>/<string:idC>/<string:wa>/<string:st>')
+def cpuUpdate(us,sy,idC,wa,st):
 	cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
 	cpu.us = us
 	cpu.sy = sy
-	cpu.idc = idc
+	cpu.idC = idC
 	cpu.wa = wa
 	cpu.st = st
 	db.session.commit()
@@ -250,7 +257,7 @@ def cpuJSONUpdate():
             cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
             cpu.us = cpudata.get("us")
             cpu.sy = cpudata.get("sy")
-            cpu.idc = cpudata.get("id")
+            cpu.idC = cpudata.get("id")
             cpu.wa = cpudata.get("wa")
             cpu.st = cpudata.get("st")
             db.session.commit()
