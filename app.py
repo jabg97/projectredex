@@ -110,8 +110,8 @@ def soShow():
     so = So.query.filter(So.id_so == 1).one()
     return render_template('so.html',so = so)
 
-@app.route('/so/update/<string:kernel>/<string:release>/<string:nodename>/<string:kernelv>/<string:machine>/<string:processor>/<string:so>/<string:hardware>')
-def soUpdate(kernel,release,nodename,kernelv,machine,processor,nso,hardware):
+@app.route('/so/update/<string:kernel>/<string:release>/<string:nodename>/<string:kernelv>/<string:machine>/<string:processor>/<string:vso>/<string:hardware>')
+def soUpdate(kernel,release,nodename,kernelv,machine,processor,vso,hardware):
     so = So.query.filter(So.id_so == 1).one()
     so.kernel = kernel
     so.release = release
@@ -119,7 +119,7 @@ def soUpdate(kernel,release,nodename,kernelv,machine,processor,nso,hardware):
     so.kernelv = kernelv
     so.machine = machine
     so.processor = processor
-    so.so = nso
+    so.so = vso
     so.hardware = hardware
     db.session.commit()
     return "SO MODIFICADO"
