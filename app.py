@@ -137,8 +137,8 @@ def userUpdate(Usuarios,UsuarioActivo):
 	db.session.commit()
 	return "USUARIO MODIFICADO"
 	
-@app.route('/user/update', methods=['GET','POST'])
-def userUpdate(Usuarios,UsuarioActivo):
+@app.route('/user/update', methods=['POST'])
+def userUpdate():
 	if request.json:
         userdata = request.json  
         user = Usuario.query.filter(Usuario.id_U == 1).one()
@@ -146,7 +146,6 @@ def userUpdate(Usuarios,UsuarioActivo):
 		#user.UsuarioActivo = UsuarioActivo
 		#db.session.commit()       
         return "Thanks. Your age is %s" % mydata.get("age")
-
     else:
         return "no json received"
 
