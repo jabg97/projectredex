@@ -141,7 +141,7 @@ def soJSONUpdate():
             db.session.commit()
             return "SO MODIFICADO" 
         else:
-            return "NO hay Datos"
+            return "NO hay Datos del SO"
     else:
         return "Error 415 (Tipo de medio no soportado)"
 
@@ -169,7 +169,7 @@ def userJSONUpdate():
             db.session.commit()
             return "USUARIO MODIFICADO" 
         else:
-            return "NO hay Datos"
+            return "NO hay Datos del Usuario"
     else:
         return "Error 415 (Tipo de medio no soportado)"
 
@@ -201,7 +201,7 @@ def memoryJSONUpdate():
             db.session.commit()
             return "MEMORIA MODIFICADA" 
         else:
-            return "NO hay Datos"
+            return "NO hay Datos de la Memoria"
     else:
         return "Error 415 (Tipo de medio no soportado)"
 
@@ -217,6 +217,21 @@ def swapUpdate(si,so):
 	swap.so = so
 	db.session.commit()
 	return "SWAP MODIFICADA"
+
+@app.route('/swap/update', methods=['POST'])
+def swapJSONUpdate():
+    if request.headers['Content-Type'] == 'application/json':
+        if request.json:
+            swapdata = request.json
+            swap = Swap.query.filter(Swap.id_Swap == 1).one()
+            swap.si = swapdata.get("si")
+            swap.so = swapdata.get("so")         
+            db.session.commit()
+            return "SWAP MODIFICADA" 
+        else:
+            return "NO hay Datos del SWAP"
+    else:
+        return "Error 415 (Tipo de medio no soportado)"
 
 @app.route('/cpu/show')
 def cpuShow():
@@ -238,6 +253,7 @@ def cpuUpdate(us,sy,idc,wa,st):
 def cpuJSONUpdate():
     if request.headers['Content-Type'] == 'application/json':
         if request.json:
+            cpudata = request.json
             cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
             cpu.us = cpudata.get("us")
             cpu.sy = cpudata.get("sy")
@@ -245,9 +261,9 @@ def cpuJSONUpdate():
             cpu.wa = cpudata.get("wa")
             cpu.st = cpudata.get("st")
             db.session.commit()
-            return "MEMORIA MODIFICADA" 
+            return "CPU MODIFICADo" 
         else:
-            return "NO hay Datos"
+            return "NO hay Datos del CPU"
     else:
         return "Error 415 (Tipo de medio no soportado)"
     
