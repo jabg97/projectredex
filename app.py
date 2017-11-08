@@ -145,7 +145,7 @@ def userJSONUpdate():
 		#user.Usuarios = Usuarios
 		#user.UsuarioActivo = UsuarioActivo
 		#db.session.commit()       
-		return "Thanks. Your age is %s" % userdata.get("age")
+		return "Thanks. Your age is %s" % userdata
 	else:
 		return "no json received"
 
