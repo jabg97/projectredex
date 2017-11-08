@@ -54,20 +54,20 @@ class Cpu(db.Model):
     id_Cpu = db.Column(db.Integer, primary_key=True)
     us = db.Column(db.String(100), unique=True)
     sy = db.Column(db.String(100), unique=True)
-    idC = db.Column(db.String(100), unique=True)
+    idnum = db.Column(db.String(100), unique=True)
     wa = db.Column(db.String(100), unique=True)
     st = db.Column(db.String(100), unique=True)
 
-    def __init__(self, us, sy, idC, wa, st):
+    def __init__(self, us, sy, idnum, wa, st):
         self.us = us
         self.sy = sy
-        self.idC = idC
+        self.idnum = idnum
         self.wa = wa
         self.st = st
 
     def __repr__(self):
-        return "<Cpu(id_Cpu='%d', us='%s', sy='%s', idC='%s', wa='%s', st='%s')>" % (
-        self.id_Cpu, self.us, self.sy, self.idC, self.wa, self.st)
+        return "<Cpu(id_Cpu='%d', us='%s', sy='%s', idnum='%s', wa='%s', st='%s')>" % (
+        self.id_Cpu, self.us, self.sy, self.idnum, self.wa, self.st)
 
 class Memory(db.Model):
     id_Memory = db.Column(db.Integer, primary_key=True)
@@ -238,12 +238,12 @@ def cpuShow():
     cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
     return render_template('cpu.html',cpu = cpu)
 
-@app.route('/cpu/update/<string:us>/<string:sy>/<string:idC>/<string:wa>/<string:st>')
+@app.route('/cpu/update/<string:us>/<string:sy>/<string:idnum>/<string:wa>/<string:st>')
 def cpuUpdate(us,sy,idC,wa,st):
 	cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
 	cpu.us = us
 	cpu.sy = sy
-	cpu.idC = idC
+	cpu.idnum = idnum
 	cpu.wa = wa
 	cpu.st = st
 	db.session.commit()
@@ -257,7 +257,7 @@ def cpuJSONUpdate():
             cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
             cpu.us = cpudata.get("us")
             cpu.sy = cpudata.get("sy")
-            cpu.idC = cpudata.get("id")
+            cpu.idnum = cpudata.get("id")
             cpu.wa = cpudata.get("wa")
             cpu.st = cpudata.get("st")
             db.session.commit()
