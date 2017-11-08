@@ -233,8 +233,24 @@ def cpuUpdate(us,sy,idc,wa,st):
 	cpu.st = st
 	db.session.commit()
 	return "CPU MODIFICADO"
-    
 
+@app.route('/cpu/update', methods=['POST'])
+def cpuJSONUpdate():
+    if request.headers['Content-Type'] == 'application/json':
+        if request.json:
+            cpu = Cpu.query.filter(Cpu.id_Cpu == 1).one()
+            cpu.us = cpudata.get("us")
+            cpu.sy = cpudata.get("sy")
+            cpu.idc = cpudata.get("id")
+            cpu.wa = cpudata.get("wa")
+            cpu.st = cpudata.get("st")
+            db.session.commit()
+            return "MEMORIA MODIFICADA" 
+        else:
+            return "NO hay Datos"
+    else:
+        return "Error 415 (Tipo de medio no soportado)"
+    
 
 @app.route('/robots.txt')
 def robots():
