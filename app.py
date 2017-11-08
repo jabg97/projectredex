@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, request
 from flask import render_template
 from flask.ext.sqlalchemy import SQLAlchemy
 
