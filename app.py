@@ -124,24 +124,8 @@ def soUpdate(kernel,release,nodename,kernelv,machine,processor,so,hardware):
 	db.session.commit()
 	return "USUARIO MODIFICADO"
 	
-@app.route('/so/update/', methods=['POST'])
-def soUpdate(kernel,release,nodename,kernelv,machine,processor,so,hardware):
-	so = So.query.filter(So.id == 1).one()
-	request_json = request.get_json()
-	if request.json:
-		kernel = request_json.get('kernel')
-		so.So = kernel
-		#so.So = release
-		#so.So = nodename
-		#so.So = kernelv
-		#so.So = machine
-		#so.So = processor
-		#so.So = so
-		#so.So = hardware
-		db.session.commit()
-		return "USUARIO MODIFICADO"
-	else:
-		return "NO HAY DATOS"
+
+
 @app.route('/user/show')
 def userShow():
     user = Usuario.query.filter(Usuario.id_U == 1).one()
