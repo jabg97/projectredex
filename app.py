@@ -165,7 +165,7 @@ def userJSONUpdate():
             userdata = request.json
             user = Usuario.query.filter(Usuario.id_U == 1).one()
             user.Usuarios = userdata.get("users")
-            user.UsuarioActivo = userdata.get("users")
+            user.UsuarioActivo = userdata.get("loggedin")
             db.session.commit()
             return "USUARIO MODIFICADO" 
         else:
